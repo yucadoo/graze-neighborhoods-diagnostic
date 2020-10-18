@@ -1,5 +1,5 @@
 {
-    "name": "YucaDoo/graze-neighborhoods-diagnostic",
+    "name": "yucadoo/graze-neighborhoods-diagnostic",
     "type": "library",
     "description": "Exception detection strategy for Graze's transient fault handler using Neighborhoods' throwable diagnostic component.",
     "keywords": [
@@ -7,7 +7,7 @@
         "transient fault",
         "retry"
     ],
-    "homepage": "https://github.com/YucaDoo/graze-neighborhoods-diagnostic",
+    "homepage": "https://github.com/yucadoo/graze-neighborhoods-diagnostic",
     "license": "MIT",
     "authors": [
         {

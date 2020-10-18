@@ -21,14 +21,21 @@ $ composer require yucadoo/graze-neighborhoods-diagnostic
 ## Usage
 
 ``` php
-use YucaDoo\GrazeNeighborhoodsDiagnostic\ExceptionDetectionStrategy;
+use YucaDoo\GrazeNeighborhoodsDiagnostic\ExceptionDetectionStrategy as NeighborhoodsExceptionDetectionStrategy;
 use Graze\TransientFaultHandler\TransientFaultHandlerBuilder;
 
-$neighborhoodsDetectionStrategy = new YucaDoo\GrazeNeighborhoodsDiagnostic\ExceptionDetectionStrategy();
+/**
+ * Obtain a preconfigured ThrowableDiagnostic builder factory.
+ * You can use Symfony DI as explained in Neighborhoods' throwable diagnostic component.
+ */
+$throwableDiagnosticBuilderFactory = $container->get('ThrowableDiagnosticBuilderFactoryWithTailoredDecoratorStack');
+
+$neighborhoodsExceptionDetectionStrategy = new NeighborhoodsExceptionDetectionStrategy();
+$neighborhoodsExceptionDetectionStrategy->setThrowableDiagnosticBuilderFactory($throwableDiagnosticBuilderFactory);
 
 $builder = new TransientFaultHandlerBuilder();
 $transientFaultHandler = $builder
-    ->setExceptionDetectionStrategy($neighborhoodsDetectionStrategy)
+    ->setExceptionDetectionStrategy($neighborhoodsExceptionDetectionStrategy)
     ...
     ->build();
 ```
